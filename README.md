@@ -1,5 +1,5 @@
 # 하이오더
-KT의 테이블탑 오더링 서비스 '하이오더'를 클라우드 네이티브 환경에서 MSA 전환하는 프로젝트입니다.
+KT의 테이블오더 서비스 '하이오더'를 클라우드 네이티브 환경에서 MSA 전환하는 프로젝트입니다.
 
 
 ## I. 분석 및 설계
@@ -17,11 +17,11 @@ KT의 테이블탑 오더링 서비스 '하이오더'를 클라우드 네이티�
 
 * **AS-IS** (Horizontally-Aligned)
 <img width="626" alt="org-asis" src="https://github.com/user-attachments/assets/c66e3937-0bb3-4831-9fc6-102d444ea9c7">
-<em>고객의 요구사항이 반영되기 어려운 조직 구성</em>
+<br><em>고객의 요구사항이 반영되기 어려운 조직 구성</em>
 
 * **TO-BE** (Vertically-Aligned)
 <img width="852" alt="ord-tobe" src="https://github.com/user-attachments/assets/2bd2fc60-010e-4ae5-9fdb-27a3ffc92eb2">
-<em>고객향 서비스가 가능한 도메인 업무 기반 조직 구성</em>
+<br><em>고객향 서비스가 가능한 도메인 업무 기반 조직 구성</em>
 
 ### 요구사항 검토
 
@@ -58,11 +58,11 @@ KT의 테이블탑 오더링 서비스 '하이오더'를 클라우드 네이티�
 
 	1. 주요 이벤트 도출
 <img width="905" alt="table-ordering-only-events" src="https://github.com/user-attachments/assets/c0141820-4ee0-48ef-a13a-bcbf3d9d6382">
-<em>캡션</em>
+<br><em>캡션</em>
 
 	2. 완성된 1차 모형
 <img width="1110" alt="table-ordering-eventstorming" src="https://github.com/user-attachments/assets/f7fc81fa-7146-4c2f-ac4f-dd461738b5dc">
-<em>캡션</em>
+<br><em>캡션</em>
 
 
 ## II. 구현
