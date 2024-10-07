@@ -4,7 +4,7 @@ import App from "./App.vue";
 import vuetify from "./plugins/vuetify";
 import Managing from "./components";
 import router from './router';
-import Keycloak from 'keycloak-js';
+// import Keycloak from 'keycloak-js';
 Vue.config.productionTip = false;
 require('./GlobalStyle.css');
 
@@ -78,39 +78,48 @@ let initOptions = {
   onLoad: `login-required`,
 };
 
-let keycloak = new Keycloak(initOptions);
+// let keycloak = new Keycloak(initOptions);
 
-init();
+// init();
 
-function init() {
-  keycloak.init({
-    onLoad: initOptions.onLoad,
-  }).then(auth => {
-    const ONE_MINUTE = 60000;
+// function init() {
+//   keycloak.init({
+//     onLoad: initOptions.onLoad,
+//   }).then(auth => {
+//     const ONE_MINUTE = 60000;
   
-    if (!auth) {
-      window.location.reload();
-    } else {
-      console.info(`Auth ok`);
-    }
+//     if (!auth) {
+//       window.location.reload();
+//     } else {
+//       console.info(`Auth ok`);
+//     }
 
-    Vue.prototype.$OAuth = keycloak
+//     Vue.prototype.$OAuth = keycloak
   
-    new Vue({
-      vuetify,
-      router,
-      render: h => h(App, {
-        props: {
-          OAuth: keycloak,
-        },
-      }),
-    }).$mount("#app");
+//     new Vue({
+//       vuetify,
+//       router,
+//       render: h => h(App, {
+//         props: {
+//           OAuth: keycloak,
+//         },
+//       }),
+//     }).$mount("#app");
   
-    window.setTimeout(refreshToken.bind(null, keycloak), ONE_MINUTE);
-  }).catch(() => {
-    console.error(`Auth Fail`);
-  })
-}
+//     window.setTimeout(refreshToken.bind(null, keycloak), ONE_MINUTE);
+//   }).catch(() => {
+//     console.error(`Auth Fail`);
+//   })
+// }
+new Vue({
+  vuetify,
+  router,
+  render: h => h(App, {
+    props: {
+      OAuth: keycloak,
+    },
+  }),
+}).$mount("#app");
 
 function refreshToken() {
   keycloak.updateToken(70).then(refreshed => {

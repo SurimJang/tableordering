@@ -1,102 +1,13 @@
-# 
+# 하이오더
+KT의 테이블탑 오더링 서비스 '하이오더'를 클라우드 네이티브 환경에서 MSA 전환하는 프로젝트입니다.
 
-## Model
-www.msaez.io/#/storming/46710160_es_teamproject
+## I. 분석 및 설계
+### 적합성 검토
+|구분|적합도|비고|
+|:------:|:---:|:---|
+|비즈니스 민첩성|상|- 테이블 오더는 **경쟁이 치열한 시장** <br>- 배포 주기 단축으로 변화하는 고객 및 시장 **요구사항에 빠르게 대응** 필요|
+|장애 격리|상|- **매출**과 직관련된 **대고객 서비스**로 장애 시 영향도가 매우 높음 <br>- 업무별 서비스 분리로 장애 전파 최소화 필요|
+|확장성|중|- **주말 또는 특정 시간대**에 트래픽이 크게 증가함 <br>- 확장에 유리한 클라우드 네이티브 설계로 **유연한 트래픽 처리** 가능함|
+## II. 구현
 
-## Before Running Services
-### Make sure there is a Kafka server running
-```
-cd kafka
-docker-compose up
-```
-- Check the Kafka messages:
-```
-cd infra
-docker-compose exec -it kafka /bin/bash
-cd /bin
-./kafka-console-consumer --bootstrap-server localhost:9092 --topic
-```
-
-## Run the backend micro-services
-See the README.md files inside the each microservices directory:
-
-- order
-- management
-- payment
-- user
-- menu
-- category
-
-
-## Run API Gateway (Spring Gateway)
-```
-cd gateway
-mvn spring-boot:run
-```
-
-## Test by API
-- order
-```
- http :8088/orders id="id" userId="userId" menuId="menuId" qty="qty" createdAt="createdAt" updatedAt="updatedAt" orderStatus="orderStatus" 
-```
-- management
-```
- http :8088/shops id="id" orderId="orderId" userId="userId" createdAt="createdAt" orderStatus="orderStatus" 
-```
-- payment
-```
- http :8088/payments id="id" paymentAmount="paymentAmount" userId="userId" orderId="orderId" paymentStatus="paymentStatus" 
-```
-- user
-```
- http :8088/users id="id" username="username" password="password" createdAt="createdAt" updatedAt="updatedAt" 
-```
-- menu
-```
- http :8088/menus id="id" menuName="menuName" menuPrice="menuPrice" qty="qty" categoryId="categoryId" 
-```
-- category
-```
- http :8088/categories id="id" categoryName="categoryName" storeId="storeId" 
-```
-
-
-## Run the frontend
-```
-cd frontend
-npm i
-npm run serve
-```
-
-## Test by UI
-Open a browser to localhost:8088
-
-## Required Utilities
-
-- httpie (alternative for curl / POSTMAN) and network utils
-```
-sudo apt-get update
-sudo apt-get install net-tools
-sudo apt install iputils-ping
-pip install httpie
-```
-
-- kubernetes utilities (kubectl)
-```
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-```
-
-- aws cli (aws)
-```
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-```
-
-- eksctl 
-```
-curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-sudo mv /tmp/eksctl /usr/local/bin
-```
-
+## III. 운영

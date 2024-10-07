@@ -1,90 +1,112 @@
+
 server:
   port: 8088
 
 ---
 
+
+keycloak-client:
+  server-url: https://9090-surimjang-tableordering-bonwbbqz16a.ws-us116.gitpod.io
+  realm: master
+
 spring:
-  profiles: default
+  config:
+    activate:
+      on-profile: default
   cloud:
     gateway:
-#<<< API Gateway / Routes
+      default-filters:
+        - TokenRelay 
       routes:
         - id: order
           uri: http://localhost:8082
           predicates:
-            - Path=/orders/**, 
+            - Path=/orders/**,  /orderHistories/**
         - id: management
           uri: http://localhost:8083
           predicates:
-            - Path=/shops/**, 
-        - id: payment
+            - Path=/shops/**,  /dailySalesCharts/**
+        - id: payment
           uri: http://localhost:8084
           predicates:
-            - Path=/payments/**, 
+            - Path=/payments/**,  
         - id: user
           uri: http://localhost:8085
           predicates:
-            - Path=/users/**, 
+            - Path=/users/**,  
         - id: menu
           uri: http://localhost:8086
           predicates:
-            - Path=/menus/**, 
+            - Path=/menus/**,  /menuLists/**
         - id: category
           uri: http://localhost:8087
           predicates:
-            - Path=/categories/**, 
+            - Path=/categories/**,  
         - id: frontend
           uri: http://localhost:8080
           predicates:
             - Path=/**
-#>>> API Gateway / Routes
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins:
+            allowedOriginPatterns:
               - "*"
             allowedMethods:
               - "*"
             allowedHeaders:
               - "*"
             allowCredentials: true
-
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: client
+            client-secret: EvvE0Tk2UN3xg65Uy8OevY7KmHnoGyde
+            redirect-uri: https://9090-surimjang-tableordering-bonwbbqz16a.ws-us116.gitpod.io/login/oauth2/code/client
+            authorization-grant-type: authorization_code
+            scope: openid
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/certs
 
 ---
 
 spring:
-  profiles: docker
+  config:
+    activate:
+      on-profile: docker
   cloud:
     gateway:
       routes:
         - id: order
           uri: http://order:8080
           predicates:
-            - Path=/orders/**, 
+            - Path=/orders/** /orderHistories/**
         - id: management
           uri: http://management:8080
           predicates:
-            - Path=/shops/**, 
-        - id: payment
+            - Path=/shops/** /dailySalesCharts/**
+        - id: payment
           uri: http://payment:8080
           predicates:
-            - Path=/payments/**, 
+            - Path=/payments/** 
         - id: user
           uri: http://user:8080
           predicates:
-            - Path=/users/**, 
+            - Path=/users/** 
         - id: menu
           uri: http://menu:8080
           predicates:
-            - Path=/menus/**, 
+            - Path=/menus/** /menuLists/**
         - id: category
           uri: http://category:8080
           predicates:
-            - Path=/categories/**, 
-        - id: frontend
-          uri: http://frontend:8080
-          predicates:
-            - Path=/**
+            - Path=/categories/** 
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -95,6 +117,23 @@ spring:
             allowedHeaders:
               - "*"
             allowCredentials: true
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: client
+            client-secret: EvvE0Tk2UN3xg65Uy8OevY7KmHnoGyde
+            redirect-uri: https://9090-surimjang-tableordering-bonwbbqz16a.ws-us116.gitpod.io/login/oauth2/code/client
+            authorization-grant-type: authorization_code
+            scope: openid
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${keycloak-client.server-url}/realms/${keycloak-client.realm}/protocol/openid-connect/certs
 
 server:
   port: 8080

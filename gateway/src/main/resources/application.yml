@@ -1,11 +1,12 @@
-server:
+
+server:
   port: 8088
 
 ---
 
 
 keycloak-client:
-  server-url: http://localhost:9090
+  server-url: https://9090-surimjang-tableordering-bonwbbqz16a.ws-us116.gitpod.io
   realm: master
 
 spring:
@@ -25,7 +26,7 @@ spring:
           uri: http://localhost:8083
           predicates:
             - Path=/shops/**,  /dailySalesCharts/**
-        - id: payment
+        - id: payment
           uri: http://localhost:8084
           predicates:
             - Path=/payments/**,  
@@ -64,9 +65,9 @@ spring:
             user-name-attribute: preferred_username
         registration:
           keycloak:
-            client-id: "<client-id>"
-            client-secret: 
-            redirect-uri: "gateway-path/login/oauth2/code/client-name"
+            client-id: client
+            client-secret: EvvE0Tk2UN3xg65Uy8OevY7KmHnoGyde
+            redirect-uri: https://9090-surimjang-tableordering-bonwbbqz16a.ws-us116.gitpod.io/login/oauth2/code/client
             authorization-grant-type: authorization_code
             scope: openid
       resourceserver:
@@ -90,8 +91,8 @@ spring:
           uri: http://management:8080
           predicates:
             - Path=/shops/** /dailySalesCharts/**
-        - id: payment
-          uri: http://payment:8080
+        - id: payment
+          uri: http://payment:8080
           predicates:
             - Path=/payments/** 
         - id: user
@@ -125,9 +126,9 @@ spring:
             user-name-attribute: preferred_username
         registration:
           keycloak:
-            client-id: "<client-id>"
-            client-secret: 
-            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+            client-id: client
+            client-secret: EvvE0Tk2UN3xg65Uy8OevY7KmHnoGyde
+            redirect-uri: https://9090-surimjang-tableordering-bonwbbqz16a.ws-us116.gitpod.io/login/oauth2/code/client
             authorization-grant-type: authorization_code
             scope: openid
       resourceserver:
