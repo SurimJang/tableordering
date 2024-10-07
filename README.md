@@ -16,12 +16,15 @@ KT의 테이블오더 서비스 '하이오더'를 클라우드 네이티브 환�
 ### 조직 구성
 
 * **AS-IS** (Horizontally-Aligned)
-<img width="626" alt="org-asis" src="https://github.com/user-attachments/assets/c66e3937-0bb3-4831-9fc6-102d444ea9c7">
-<br><em>고객의 요구사항이 반영되기 어려운 조직 구성</em>
-
+<p align="center">
+	<img width="626" alt="org-asis" src="https://github.com/user-attachments/assets/c66e3937-0bb3-4831-9fc6-102d444ea9c7">
+	<em>고객의 요구사항이 반영되기 어려운 조직 구성</em>
+</p>
 * **TO-BE** (Vertically-Aligned)
-<img width="852" alt="ord-tobe" src="https://github.com/user-attachments/assets/2bd2fc60-010e-4ae5-9fdb-27a3ffc92eb2">
-<br><em>고객향 서비스가 가능한 도메인 업무 기반 조직 구성</em>
+<p align="center">
+	<img width="852" alt="ord-tobe" src="https://github.com/user-attachments/assets/2bd2fc60-010e-4ae5-9fdb-27a3ffc92eb2">
+	<em>고객향 서비스가 가능한 도메인 업무 기반 조직 구성</em>
+</p>
 
 ### 요구사항 검토
 
@@ -57,7 +60,7 @@ KT의 테이블오더 서비스 '하이오더'를 클라우드 네이티브 환�
 * **EventStorming**
 
 	1. 주요 이벤트 도출
-<img width="905" alt="table-ordering-only-events" src="https://github.com/user-attachments/assets/c0141820-4ee0-48ef-a13a-bcbf3d9d6382">
+<img width="905" alt="table-ordering-only-events" src="https://github.com/user-attachments/assets/c0141820-4ee0-48ef-a13a-bcbf3d9d6382" align="center">
 <br><em>캡션</em>
 
 	2. 완성된 1차 모형
