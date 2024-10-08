@@ -60,13 +60,22 @@ KT의 테이블오더 서비스 '하이오더'를 클라우드 네이티브 환�
 
 * **EventStorming**
 
-	1. 주요 이벤트 도출
-<img width="905" alt="table-ordering-only-events" src="https://github.com/user-attachments/assets/c0141820-4ee0-48ef-a13a-bcbf3d9d6382" align="center">
-<br><em>캡션</em>
+    1. 기존 모놀리식 설계
+        <p align="center">
+            <br><em>캡션</em>
+        </p>
 
-	2. 완성된 1차 모형
-<img width="1110" alt="table-ordering-eventstorming" src="https://github.com/user-attachments/assets/f7fc81fa-7146-4c2f-ac4f-dd461738b5dc">
-<br><em>캡션</em>
+	2. 주요 이벤트 도출
+        <p align="center">
+            <img width="905" alt="table-ordering-only-events" src="https://github.com/user-attachments/assets/c0141820-4ee0-48ef-a13a-bcbf3d9d6382" align="center">
+            <br><em>캡션</em>
+        </p>
+
+    3. 완성된 1차 모형
+        <p align="center">
+            <img width="1110" alt="table-ordering-eventstorming" src="https://github.com/user-attachments/assets/f7fc81fa-7146-4c2f-ac4f-dd461738b5dc">
+            <br><em>캡션</em>
+        </p>
 
 
 ## II. 구현
