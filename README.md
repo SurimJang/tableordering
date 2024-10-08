@@ -18,12 +18,13 @@ KT의 테이블오더 서비스 '하이오더'를 클라우드 네이티브 환�
 * **AS-IS** (Horizontally-Aligned)
 <p align="center">
 	<img width="626" alt="org-asis" src="https://github.com/user-attachments/assets/c66e3937-0bb3-4831-9fc6-102d444ea9c7">
-	<em>고객의 요구사항이 반영되기 어려운 조직 구성</em>
+	<br><em>고객의 요구사항이 반영되기 어려운 조직 구성</em>
 </p>
+
 * **TO-BE** (Vertically-Aligned)
 <p align="center">
 	<img width="852" alt="ord-tobe" src="https://github.com/user-attachments/assets/2bd2fc60-010e-4ae5-9fdb-27a3ffc92eb2">
-	<em>고객향 서비스가 가능한 도메인 업무 기반 조직 구성</em>
+	<br><em>고객향 서비스가 가능한 도메인 업무 기반 조직 구성</em>
 </p>
 
 ### 요구사항 검토
@@ -78,4 +79,33 @@ echo 할 수 있다!
 
 ```yaml
  - 할 수 있다!
+```
+
+## 환경설정
+```sh
+sudo apt-get update
+sudo apt-get install net-tools
+sudo apt install iputils-ping
+pip install httpie
+
+#  << kubectl >>
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+#  << AWS & eksctl >>
+# curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "../awscliv2.zip"
+# unzip ../awscliv2.zip -d ../
+# sudo .././aws/install
+# curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+# sudo mv /tmp/eksctl /usr/local/bin
+
+#  << NVM >>
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install 14.19.0 && nvm use 14.19.0
+export NODE_OPTIONS=--openssl-legacy-provider
+
+#  << Docker >>
+cd infra
+docker-compose up
 ```

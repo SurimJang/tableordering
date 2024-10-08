@@ -22,7 +22,7 @@ See the README.md files inside the each microservices directory:
 
 - order
 - management
-- payment
+- payment
 - user
 - menu
 - category
@@ -43,7 +43,7 @@ mvn spring-boot:run
 ```
  http :8088/shops id="id" orderId="orderId" userId="userId" createdAt="createdAt" orderStatus="orderStatus" 
 ```
-- payment
+- payment
 ```
  http :8088/payments id="id" paymentAmount="paymentAmount" userId="userId" orderId="orderId" paymentStatus="paymentStatus" 
 ```
