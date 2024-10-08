@@ -91,6 +91,7 @@ echo 할 수 있다!
 ```
 
 ## 환경설정
+* init.sh
 ```sh
 sudo apt-get update
 sudo apt-get install net-tools
